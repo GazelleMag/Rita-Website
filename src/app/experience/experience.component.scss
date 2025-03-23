@@ -2,7 +2,9 @@ $white-color: #fbf8ef;
 $rose-color: #a66674;
 
 #experience {
-  min-height: 100vh;
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 .timeline-wrapper {

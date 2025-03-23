@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/rita-website/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

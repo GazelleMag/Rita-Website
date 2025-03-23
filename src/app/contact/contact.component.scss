@@ -2,11 +2,13 @@
 @use "sass:color";
 
 #contact {
-  min-height: 100vh;
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
 }
 
 .contact-col {
-  min-height: 95vh;
+  min-height: 95%;
 }
 
 .contact-card {
@@ -48,5 +50,5 @@
 }
 
 .footer-col {
-  min-height: 5vh;
+  min-height: 5%;
 }

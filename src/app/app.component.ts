@@ -17,10 +17,18 @@ export class AppComponent {
   private currentSectionIndex: number = 0;
   private sections: HTMLElement[] = [];
   private resizeTimeout: any = null;
+  private touchStartY: number = 0;
+  private touchEndY: number = 0;
+  private minSwipeDistance: number = 50;
+  private isScrolling: boolean = false;
 
   ngAfterViewInit(): void {
     this.sections = Array.from(document.querySelectorAll('.section'));
     this.adjustSectionHeights();
+
+    setTimeout(() => {
+      this.smoothScroll();
+    }, 100);
   }
 
   @HostListener('wheel', ['$event'])
@@ -31,12 +39,50 @@ export class AppComponent {
     } else {
       this.scrollToPrevious();
     }
+
+    setTimeout(() => {
+      this.isScrolling = false;
+    }, 400);
+  }
+
+  // scroll for mobile
+  @HostListener('touchstart', ['$event'])
+  onTouchStart(event: TouchEvent): void {
+    this.touchStartY = event.touches[0].clientY;
+  }
+
+  @HostListener('touchmove', ['$event'])
+  onTouchMove(event: TouchEvent): void {
+    event.preventDefault();
+  }
+
+  @HostListener('touchend', ['$event'])
+  onTouchEnd(event: TouchEvent): void {
+    if (this.isScrolling) {
+      return;
+    }
+    this.touchEndY = event.changedTouches[0].clientY;
+    const swipeDistance = this.touchStartY - this.touchEndY;
+    if (Math.abs(swipeDistance) > this.minSwipeDistance) {
+      this.isScrolling = true;
+
+      if (swipeDistance > 0) {
+        this.scrollToNext();
+      } else {
+        this.scrollToPrevious();
+      }
+      setTimeout(() => {
+        this.isScrolling = false;
+      }, 400);
+    }
   }
 
   private scrollToNext(): void {
     if (this.currentSectionIndex < this.sections.length - 1) {
       this.currentSectionIndex++;
       this.smoothScroll();
+    } else {
+      this.isScrolling = false;
     }
   }
 
@@ -44,6 +90,8 @@ export class AppComponent {
     if (this.currentSectionIndex > 0) {
       this.currentSectionIndex--;
       this.smoothScroll();
+    } else {
+      this.isScrolling = false;
     }
   }
 
@@ -63,9 +111,14 @@ export class AppComponent {
   }
 
   private adjustSectionHeights(): void {
-    const viewportHeight = window.innerHeight;
+    const viewportHeight = document.documentElement.clientHeight;
     this.sections.forEach(section => {
-      section.style.height = `${viewportHeight}px`;
+      section.style.height = `${viewportHeight}px`
+      section.style.maxHeight = `${viewportHeight}px`;
     });
+    document.body.offsetHeight;
+    setTimeout(() => {
+      window.scrollTo(0, 0)
+    }, 50);
   }
 }
