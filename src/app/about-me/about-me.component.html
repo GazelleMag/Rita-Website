@@ -1,0 +1,26 @@
+<div id="about-me" class="row section">
+  <div class="d-none d-lg-block col-lg-1"></div>
+  <div class="col-lg-5 col-md-6 col-sm-6 col-12 d-flex align-items-center justify-content-center"
+    [@slideInLeft]="!isMobile ? (isVisible ? 'visible' : 'hidden') : null"
+    [@fadeInFadeOut]="isMobile ? (isVisible ? 'visible' : 'hidden') : null">
+    <div class="">
+      <h1>Hello!</h1>
+      <h1>I'm Rita.</h1>
+      <p>I'm a dynamic pharmacist with a background in clinical research, drug development, and
+        healthcare communication. I'm also experienced in engaging with healthcare professionals to deliver
+        scientific data and support evidence-based decisions.</p>
+      <p>Skilled in patient education, treatment compliance, and pharmaceutical logistics.</p>
+      <p>Passionate about innovation, collaboration, and
+        advancing medical science through scientific exchange and research.</p>
+      <p class="scroll-down-message" [@heartbeat]="heartbeatState">Scroll down so you can learn more.</p>
+    </div>
+  </div>
+  <div class="col-lg-5 col-md-6 col-sm-6 col-12 d-flex align-items-center justify-content-center"
+    [@slideInRight]="!isMobile ? (isVisible ? 'visible' : 'hidden') : null"
+    [@fadeInFadeOut]="isMobile ? (isVisible ? 'visible' : 'hidden') : null">
+    <div class="image-wrapper">
+      <img src="/photo.jpg" loading="eager" />
+    </div>
+  </div>
+  <div class="d-none d-lg-block col-lg-1"></div>
+</div>

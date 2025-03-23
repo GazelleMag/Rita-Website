@@ -1,0 +1,41 @@
+<div id="experience" class="row section">
+  <div class="d-none d-lg-block col-lg-1"></div>
+  <div class="col-lg-5 col-md-5 col-sm-5 col-5 d-flex align-items-center justify-content-center">
+    <div class="timeline-wrapper" [@fadeInFadeOut]="isVisible ? 'visible' : 'hidden'"
+      [@timelineRetract]="isTimelineRetracted ? 'retracted' : 'extended'"
+      [ngClass]="{'retracted': isTimelineRetracted}">
+      <!-- Timeline central line -->
+      <div class="timeline-central-line" [ngClass]="{'extended': !isTimelineRetracted}"></div>
+      <!-- Timeline nodes -->
+      <div *ngFor="let experience of timelineExperiences; let i = index" class="timeline-node" #nodeElement
+        [class.active]="selectedExperience === experience">
+        <div class="node" (click)="selectExperience(experience)"></div>
+        <div class="experience-label">
+          <p>{{ experience.startYear }} {{ experience.startMonth}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-5 col-md-7 col-sm-7 col-7 d-flex align-items-center justify-content-center">
+    <div class="row">
+      <div class="col-12">
+        <div class="text-align-center" *ngIf="!selectedExperience" [@fadeInFadeOut]="isVisible ? 'visible' : 'hidden'">
+          <h1>Work Experience</h1>
+        </div>
+        <div class="experience-details-wrapper" *ngIf="selectedExperience"
+          [@fadeInFadeOut]="isVisible ? 'visible' : 'hidden'"
+          [@detailsFadeIn]="selectedExperience.startYear + selectedExperience.title">
+          <h2>{{ selectedExperience.title }}</h2>
+          <p>{{ selectedExperience.location }}</p>
+          <p>{{ selectedExperience.startMonth}} {{selectedExperience.startYear}}
+            <span class="inline-divider"></span>
+            {{ selectedExperience.endMonth}} {{selectedExperience.endYear}}
+          </p>
+
+          <p [innerHTML]="selectedExperience.description"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-none d-lg-block col-lg-1"></div>
+</div>

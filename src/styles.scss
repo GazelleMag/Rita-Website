@@ -1,1 +1,85 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+
+$white-color: #fbf8ef;
+$rose-color: #a66674;
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  color: $rose-color;
+}
+
+body {
+  font-family: 'Calibri', sans-serif;
+  background-color: $white-color;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+h1 {
+  font-size: 60px;
+
+  @media (max-width: 991px) {
+    // md
+    font-size: 48px;
+  }
+
+  @media (max-width: 991px) and (orientation: landscape) {
+    font-size: 32px;
+  }
+
+  @media (max-width: 767px) {
+    // sm
+    font-size: 40px;
+  }
+
+  @media (max-width: 767px) and (orientation: landscape) {
+    font-size: 32px;
+  }
+
+  @media (max-width: 575px) {
+    // xs
+    font-size: 32px;
+  }
+
+  @media (max-width: 575px) and (orientation: landscape) {
+    font-size: 32px;
+  }
+}
+
+p {
+  font-size: 20px;
+
+  @media (max-width: 991px) {
+    // md
+    font-size: 18px;
+  }
+
+  @media (max-width: 991px) and (orientation: landscape) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 767px) {
+    // sm
+    font-size: 16px;
+  }
+
+  @media (max-width: 767px) and (orientation: landscape) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 575px) {
+    // xs
+    font-size: 14px;
+  }
+
+  @media (max-width: 575px) and (orientation: landscape) {
+    font-size: 14px;
+  }
+}
