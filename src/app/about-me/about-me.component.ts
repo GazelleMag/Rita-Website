@@ -32,8 +32,9 @@ import { Component, ElementRef, NgZone } from '@angular/core';
   ]
 })
 export class AboutMeComponent {
-  public isMobile: boolean = window.innerWidth < 768;
   public isVisible: boolean = false;
+  public isMobile: boolean = window.innerWidth < 768;
+
   public heartbeatState: 'start' | 'end' = 'start';
   private heartbeatInterval: any = null;
 

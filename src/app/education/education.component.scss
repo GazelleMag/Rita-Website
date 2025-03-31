@@ -1,0 +1,113 @@
+@use "sass:color";
+
+$white-color: #fbf8ef;
+$rose-color: #a66674;
+
+#education {
+  min-height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.education-wrapper {
+  height: 500px;
+
+  @media (max-width: 575px) {
+    height: unset;
+  }
+}
+
+.education-wrapper h3 {
+  @media (max-width: 575px) {
+    text-align: center;
+  }
+}
+
+.certifications-wrapper {
+  height: 500px;
+
+  @media (max-width: 575px) {
+    height: unset;
+  }
+}
+
+.certifications-wrapper h3 {
+  @media (max-width: 575px) {
+    text-align: center;
+  }
+}
+
+.section-entry {
+  padding: 20px;
+  background: $rose-color;
+  color: $white-color;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background: color.adjust($rose-color, $lightness: -10%);
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 575px) {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.section-title {
+  font-size: 16px;
+  margin-bottom: 0px;
+
+  @media (max-width: 575px) {
+    font-size: 12px;
+  }
+}
+
+.section-information {
+  font-weight: normal;
+  margin-bottom: 0px !important;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+  font-size: 14px;
+
+  @media (max-width: 575px) {
+    font-size: 10px;
+  }
+}
+
+.section-information.visible {
+  opacity: 1;
+  max-height: 500px;
+  margin-top: 5px;
+}
+
+.section-information.hidden {
+  opacity: 0;
+  max-height: 0;
+  margin-top: 0px;
+}
+
+.inline-divider {
+  display: inline-block;
+  width: 50px;
+  height: 2px;
+  background-color: $white-color;
+  vertical-align: middle;
+  margin: 0 10px;
+
+  @media (max-width: 768px) {
+    width: 30px;
+    margin: 0 8px;
+  }
+
+  @media (max-width: 480px) {
+    width: 10px;
+    margin: 0 5px;
+  }
+}

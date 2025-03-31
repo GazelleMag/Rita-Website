@@ -1,0 +1,36 @@
+<div id="education" class="row section">
+  <div class="d-none d-lg-block col-lg-1"></div>
+  <div class="col-lg-5 col-md-6 col-sm-6 col-12 d-flex flex-column align-items-center justify-content-center">
+    <div class="education-wrapper d-flex flex-column justify-content-start">
+      <h3>Education</h3>
+      <div class="section-entry" *ngFor="let section of educationSections; let i = index"
+        (click)="toggleSection(i, 'education')">
+        <p class="section-title">{{section.title}}</p>
+        <p class="section-information"
+          [ngClass]="{'visible': activeSections.has('education-' + i), 'hidden': !activeSections.has('education-' + i)}">
+          {{section.startMonth}} {{section.startYear}}
+          <span class="inline-divider"></span>
+          {{section.endMonth}} {{section.endYear}} |
+          {{section.location}}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-5 col-md-6 col-sm-6 col-12 d-flex flex-column align-items-center justify-content-center">
+    <div class="certifications-wrapper d-flex flex-column justify-content-start">
+      <h3>Certifications</h3>
+      <div class="section-entry" *ngFor="let section of certificationSections; let i = index"
+        (click)="toggleSection(i, 'certification')">
+        <p class="section-title">{{section.title}}</p>
+        <p class="section-information"
+          [ngClass]="{'visible': activeSections.has('certification-' + i), 'hidden': !activeSections.has('certification-' + i)}">
+          {{section.startMonth}} {{section.startYear}}
+          <span class="inline-divider"></span>
+          {{section.endMonth}} {{section.endYear}} |
+          {{section.location}}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="d-none d-lg-block col-lg-1"></div>
+</div>
