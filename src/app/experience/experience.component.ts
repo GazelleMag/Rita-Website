@@ -156,7 +156,7 @@ export class ExperienceComponent implements OnInit, AfterViewInit {
     this.isMobile = window.innerWidth < 768;
   }
 
-  selectExperience(experience: any) {
+  public selectExperience(experience: any) {
     if (this.selectedExperience === experience) {
       return;
     }

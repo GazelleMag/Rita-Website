@@ -9,8 +9,10 @@
       <!-- Timeline nodes -->
       <div *ngFor="let experience of timelineExperiences; let i = index" class="timeline-node" #nodeElement
         [class.active]="selectedExperience === experience">
-        <div class="node" (click)="selectExperience(experience)"></div>
-        <div class="experience-label">
+        <div class="node" (click)="selectExperience(experience)">
+
+        </div>
+        <div class="experience-label" (click)="selectExperience(experience)">
           <p>{{ experience.startYear }} {{ experience.startMonth}}</p>
         </div>
       </div>
